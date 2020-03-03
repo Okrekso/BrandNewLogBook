@@ -1,0 +1,14 @@
+@import "../../scss/colors.scss";
+
+header {
+    align-self: stretch;
+    padding: 5px;
+    flex-direction: row;
+    background: $main_darker;
+    color: white;
+
+    h1 {
+        flex: 1;
+        text-align: center;
+    }
+}

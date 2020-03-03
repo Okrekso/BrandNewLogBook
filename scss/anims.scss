@@ -1,0 +1,23 @@
+.flow-bottom-enter,
+.flow-bottom-appear {
+    opacity: 0;
+    transform: translateY(100px);
+}
+
+.flow-bottom-enter-active,
+.flow-bottom-appear-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 800ms;
+}
+
+.flow-bottom-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.flow-bottom-exit-active {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: 800ms;
+}

@@ -5,7 +5,8 @@ import {
     BrowserRouter as Router,
     Route, Switch
 } from 'react-router-dom';
-import Auth from './auth/auth';
+import AuthPage from './auth/AuthPage';
+import Header from './header/header';
 
 
 export default function render(to) {
@@ -15,9 +16,10 @@ export default function render(to) {
 function Site(props) {
     return (
         <Router>
+            <Header />
             <Switch>
                 <Route to="/" exact>
-                    <Auth />
+                    <AuthPage />
                 </Route>
             </Switch>
         </Router>
