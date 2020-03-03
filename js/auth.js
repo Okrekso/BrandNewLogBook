@@ -4,7 +4,8 @@ export default class Auth {
         this.currentUser = {
             name: "Tester",
             status: "student",
-            id: "s000000"
+            id: "s000000",
+            group: "4SD-31",
         };
         return {
             currentUser: this.currentUser

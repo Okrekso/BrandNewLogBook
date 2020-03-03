@@ -3,6 +3,7 @@
 header {
     align-self: stretch;
     padding: 5px;
+    z-index: 100000;
     flex-direction: row;
     background: $main_darker;
     color: white;

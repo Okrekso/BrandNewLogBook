@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:900&display=swap');
 @import "./anims.scss";
 @import "./colors.scss";
+
 html,
 body,
 div {
@@ -32,10 +33,20 @@ button {
     }
 }
 
+#container {
+    min-height: 100vh;
+    width: 100vw;
+}
+
 input,
 textarea {
     margin: 5px;
     padding: 5px;
     border: 1px solid black;
     outline: none;
+}
+
+.full-page {
+    flex: 1;
+    align-self: stretch;
 }

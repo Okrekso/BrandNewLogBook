@@ -1,0 +1,86 @@
+@import "../../scss/colors.scss";
+
+#account-page {
+
+    #top {
+        flex: 2;
+        box-shadow: rgba(0, 0, 0, 0.4) 0 0 10px;
+        // background: radial-gradient(rgb(75, 85, 218), rgb(84, 182, 174));
+        color: white;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        transition: 1s ease-out;
+
+        &:hover {
+            .decoration.l {
+                transform: rotate(20deg) translateX(0) scaleX(1.4);
+            }
+            .decoration.r1 {
+                transform: rotate(20deg) translateX(-100px) scaleX(1.4);
+            }
+            .decoration.r2 {
+                transform: rotate(20deg) translateX(0px) scaleX(1.4);
+            }
+
+            .img {
+                width: 5em;
+                height: 5em;
+            }
+        }
+
+        .decoration {
+            transition: 0.1s ease-out;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            height: 150%;
+            width: 5em;
+
+            &.l {
+                left: 0;
+                transform: rotate(20deg) translateX(-50px);
+            }
+
+            &.r1 {
+                right: 0;
+                width: 3em;
+                transform: rotate(20deg) translateX(-50px);
+            }
+
+            &.r2 {
+                right: 0;
+                transform: rotate(20deg) translateX(50px);
+            }
+        }
+
+        .img {
+            border-radius: 100%;
+            width: 4em;
+            height: 4em;
+            margin-top: 10px;
+            transition: 200ms ease-out;
+            background-image: url("../../src/user.png");
+            background-position: center;
+            background-size: cover;
+        }
+
+        h3 {
+            margin: 0;
+        }
+
+        #name {
+            font-size: 1.5em;
+        }
+
+        #group {
+            font-size: 1em;
+            color: blue;
+        }
+    }
+
+    #bottom {
+        flex: 9;
+        background: $second_darker;
+    }
+}
