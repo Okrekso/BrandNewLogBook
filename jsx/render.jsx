@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import AuthPage from './auth/AuthPage';
 import Header from './header/header';
+import AccountPage from './account/AccountPage';
 
 
 export default function render(to) {
@@ -18,8 +19,11 @@ function Site(props) {
         <Router>
             <Header />
             <Switch>
-                <Route to="/" exact>
+                <Route path="/" exact>
                     <AuthPage />
+                </Route>
+                <Route path="/account" exact>
+                    <AccountPage />
                 </Route>
             </Switch>
         </Router>

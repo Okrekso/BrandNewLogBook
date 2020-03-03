@@ -1,16 +1,18 @@
 // this is temporary values before backend connected
 export default class Auth {
-    static currentUser;
-
-    static signIn = new Promise((resolve, reject) => {
-        resolve(true);
-    });
-
-    constructor() {
-        currentUser = {
+    static auth() {
+        this.currentUser = {
             name: "Tester",
             status: "student",
             id: "s000000"
+        };
+        return {
+            currentUser: this.currentUser
         }
+    }
+    static signIn() {
+        return new Promise((resolve, reject) => {
+            resolve(true);
+        });
     }
 }

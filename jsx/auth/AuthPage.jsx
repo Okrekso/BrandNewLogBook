@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback, useMemo } from 'react';
 import "./AuthPage.scss";
-
 import { CSSTransition } from "react-transition-group";
 
 export default function AuthPage(props) {
