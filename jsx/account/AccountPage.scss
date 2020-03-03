@@ -3,7 +3,7 @@
 #account-page {
 
     #top {
-        flex: 2;
+        height: 15em;
         box-shadow: rgba(0, 0, 0, 0.4) 0 0 10px;
         // background: radial-gradient(rgb(75, 85, 218), rgb(84, 182, 174));
         color: white;
@@ -13,13 +13,23 @@
         overflow: hidden;
         transition: 1s ease-out;
 
+        &.student {
+            background: $main;
+        }
+
+        &.teacher {
+            background: rgb(236, 89, 89);
+        }
+
         &:hover {
             .decoration.l {
                 transform: rotate(20deg) translateX(0) scaleX(1.4);
             }
+
             .decoration.r1 {
-                transform: rotate(20deg) translateX(-100px) scaleX(1.4);
+                transform: rotate(20deg) translateX(-8em) scaleX(1.4);
             }
+
             .decoration.r2 {
                 transform: rotate(20deg) translateX(0px) scaleX(1.4);
             }
@@ -30,27 +40,32 @@
             }
         }
 
+        * {
+            z-index: 100;
+        }
+
         .decoration {
+            z-index: 0;
             transition: 0.1s ease-out;
             position: absolute;
             background: rgba(255, 255, 255, 0.2);
-            height: 150%;
+            height: 250%;
             width: 5em;
 
             &.l {
                 left: 0;
-                transform: rotate(20deg) translateX(-50px);
+                transform: rotate(20deg) translateX(-2.5em);
             }
 
             &.r1 {
                 right: 0;
                 width: 3em;
-                transform: rotate(20deg) translateX(-50px);
+                transform: rotate(20deg) translateX(-4em);
             }
 
             &.r2 {
                 right: 0;
-                transform: rotate(20deg) translateX(50px);
+                transform: rotate(20deg) translateX(2.5em);
             }
         }
 
@@ -63,6 +78,28 @@
             background-image: url("../../src/user.png");
             background-position: center;
             background-size: cover;
+            position: relative;
+            align-items: center;
+            overflow: hidden;
+
+            &:hover {
+                .add-photo {
+                    margin-top: 70%;
+                }
+            }
+
+            .add-photo {
+                // position: absolute;
+                align-self: stretch;
+                width: 100%;
+                margin: 0 auto;
+                background: rgba(128, 128, 128, 0.5);
+                padding-bottom: 20px;
+                bottom: -1em;
+                margin-top: 100%;
+                transition: 200ms ease-out;
+                left: 0;
+            }
         }
 
         h3 {
@@ -80,7 +117,7 @@
     }
 
     #bottom {
-        flex: 9;
+        flex: 9 0;
         background: $second_darker;
     }
 }
