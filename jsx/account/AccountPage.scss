@@ -1,9 +1,10 @@
 @import "../../scss/colors.scss";
 
 #account-page {
+    background: $second_darker;
 
     #top {
-        height: 15em;
+        height: 10em;
         box-shadow: rgba(0, 0, 0, 0.4) 0 0 10px;
         // background: radial-gradient(rgb(75, 85, 218), rgb(84, 182, 174));
         color: white;
@@ -118,6 +119,7 @@
 
     #bottom {
         flex: 9 0;
+        transition: 1s ease-out;
         background: $second_darker;
     }
 }

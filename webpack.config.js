@@ -52,5 +52,7 @@ module.exports = {
     overlay: true,
     host: 'localhost',
     port: 8080,
+    contentBase: './',
+    hot: true
   }
 };

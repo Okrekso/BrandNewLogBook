@@ -22,7 +22,7 @@ function Site(props) {
                 <Route path="/" exact>
                     <AuthPage />
                 </Route>
-                <Route path="/account" exact>
+                <Route path="/account">
                     <AccountPage />
                 </Route>
             </Switch>

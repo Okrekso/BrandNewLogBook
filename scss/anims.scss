@@ -21,3 +21,29 @@
     transform: translateY(100px);
     transition: 800ms;
 }
+
+// flow-top
+
+.flow-top-enter,
+.flow-top-appear {
+    opacity: 0;
+    transform: translateY(-100px);
+}
+
+.flow-top-enter-active,
+.flow-top-appear-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 800ms;
+}
+
+.flow-top-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.flow-top-exit-active {
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: 800ms;
+}
