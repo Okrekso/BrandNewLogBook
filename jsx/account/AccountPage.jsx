@@ -3,17 +3,18 @@ import "./AccountPage.scss";
 import Auth from "../../js/auth";
 import BlankButtonSlider from "../customElements/blankButtonSlider/BlankButtonSlider";
 import { CSSTransition } from 'react-transition-group';
-import { BrowserRouter as Router, Route, Link, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, useLocation, Switch } from 'react-router-dom'
+import AccountStatistics from './account-statistics/AccountStatistics';
 
 
 
 export default function AccountPage(props) {
     const location = useLocation();
-    
+
     return <div id="account-page" className="full-page">
         <CSSTransition classNames="flow-top" timeout={1000}
-        unmountOnExit
-        in={location.pathname=="/account"}>
+            unmountOnExit
+            in={location.pathname == "/account"}>
             <div id="top" className={Auth.auth().currentUser.status}>
                 <div className="decoration l"></div>
                 <div className="img">
@@ -27,6 +28,13 @@ export default function AccountPage(props) {
         </CSSTransition>
 
         <div id="bottom">
+
+            <Switch>
+                <Route path="/account" exact>
+                    <AccountStatistics />
+                </Route>
+            </Switch>
+
             <BlankButtonSlider
                 links={[
                     { url: "/account", label: "мій акаунт" },
