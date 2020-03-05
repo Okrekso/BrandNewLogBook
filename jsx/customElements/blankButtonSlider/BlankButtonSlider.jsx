@@ -12,7 +12,7 @@ export default function BlankButtonsSlider(props) {
     return (
         <div className="blank-slider" style={props.style}>
             {
-                links.map((li, i) => <div className={`element-holder ${location.pathname == (typeof (li) == "string" ? li : li.url) ? "current" : ""}`}
+                links.map((li, i) => <div key={i} className={`element-holder ${location.pathname == (typeof (li) == "string" ? li : li.url) ? "current" : ""}`}
                     onClick={() => history.push(typeof (li) == "string" ? li : li.url)}>
                     <h4>{typeof (li) == "string" ? li : li.label}</h4>
                     <div className={`element`}></div>

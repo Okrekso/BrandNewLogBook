@@ -23,19 +23,42 @@ export default function AccountStatistics(props) {
     )
 }
 
-function StatisticsBlock(props = { delay: 0 }) {
+function StatisticsBlock(props = { delay: 0, rndeffect: false }) {
     const [animated, setanimated] = useState(false);
+    const [value, setvalue] = useState();
+    const [rndindex, setrndindex] = useState(0);
+    const [maxeffect, setmaxeffect] = useState(props.maxvalue ? props.maxvalue : 100);
+    const [mineffect, setmineffect] = useState(1);
+
+    const effectCount = 50;
     useEffect(() => {
+        if (props.rndeffect && rndindex < effectCount + 1)
+            setTimeout(() => {
+                console.log("set");
+                if (rndindex == effectCount) {
+                    setvalue(props.value);
+                    return;
+                }
+                const rnd = Math.floor(Math.random() * (maxeffect - mineffect + 1)) + mineffect;
+                setvalue(rnd);
+                if (maxeffect > props.value)
+                    setmaxeffect(maxeffect - 2);
+                if (mineffect < props.value)
+                    setmineffect(mineffect + 2);
+
+                setrndindex(rndindex + 1);
+            }, 25);
+
         setTimeout(() => {
             setanimated(true);
         }, props.delay);
-    }, []);
+    }, [rndindex]);
     return (
         <CSSTransition classNames="flow-bottom" in={animated} timeout={1000}>
             <div style={{ visibility: !animated ? "hidden" : "visible" }} className="statistics-block">
                 <p>{props.label}</p>
                 <div className="value-holder">
-                    <h4 style={{ color: props.valueColor }}>{props.value}</h4>
+                    <h4 style={{ color: props.valueColor }}>{props.rndeffect ? value : props.value}</h4>
                     {
                         props.maxvalue &&
                         <h5 style={{ color: props.valueColor }}>/ {props.maxvalue}</h5>
