@@ -5,16 +5,18 @@ import BlankButtonSlider from "../customElements/blankButtonSlider/BlankButtonSl
 import { CSSTransition } from 'react-transition-group';
 import { BrowserRouter as Router, Route, Link, useLocation, Switch } from 'react-router-dom'
 import AccountStatistics from './account-statistics/AccountStatistics';
+import AccountSchedule from './account-schedule/AccountSchedule';
 
 
 
 export default function AccountPage(props) {
+    const [schedule, setschedule] = useState([]);
     const location = useLocation();
 
     return <div id="account-page" className="full-page">
         <CSSTransition classNames="flow-top" timeout={1000}
             unmountOnExit
-            in={location.pathname == "/account"}>
+            in={location.pathname == "/"}>
             <div id="top" className={Auth.auth().currentUser.status}>
                 <div className="decoration l"></div>
                 <div className="img">
@@ -30,17 +32,20 @@ export default function AccountPage(props) {
         <div id="bottom">
 
             <Switch>
-                <Route path="/account" exact>
+                <Route path="/" exact>
                     <AccountStatistics />
+                </Route>
+                <Route path="/schedule" exact>
+                    <AccountSchedule />
                 </Route>
             </Switch>
 
             <BlankButtonSlider
                 links={[
-                    { url: "/account", label: "мій акаунт" },
-                    { url: "/account/schedule", label: "розклад" },
-                    { url: "/account/points", label: "успішність" },
-                    { url: "/account/settings", label: "налаштування" },
+                    { url: "/", label: "мій акаунт" },
+                    { url: "/schedule", label: "розклад" },
+                    { url: "/points", label: "успішність" },
+                    { url: "/settings", label: "налаштування" },
                 ]} />
         </div>
     </div>

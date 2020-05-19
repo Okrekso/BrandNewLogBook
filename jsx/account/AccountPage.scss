@@ -2,7 +2,6 @@
 
 #account-page {
     background: $second_darker;
-
     #top {
         height: 10em;
         box-shadow: rgba(0, 0, 0, 0.4) 0 0 10px;
@@ -118,7 +117,10 @@
     }
 
     #bottom {
+        // background: rgb(0, 102, 255);
         flex: 9 0;
+        height: 0;
+        overflow-y: auto;
         transition: 1s ease-out;
         background: $second_darker;
     }
