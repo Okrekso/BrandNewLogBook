@@ -5,9 +5,24 @@
     align-self: center;
     margin: 20px 0;
     border-radius: 10px;
+    align-items: stretch;
 
-    .text-fields {
-        margin: 2px 20px;
+    // .text-fields {
+    //     margin: 2px 20px;
+    // }
+
+    .MuiInputBase-root {
+        margin: 10px 20px;
+    }
+    .MuiInputLabel-root {
+        margin: 0 20px;
+    }
+
+    #inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 1em;
     }
 
     #error-holder {
@@ -15,6 +30,7 @@
         align-items: center;
         margin: 0px 20px;
         margin-top: 10px;
+
         p {
             color: #df3030;
             margin-left: 5px;
@@ -25,8 +41,12 @@
         align-self: center;
     }
 
+    p {
+        color: rgba(0, 0, 0, 0.3);
+        margin: 4px 0;
+    }
+
     button {
-        margin-top: 1em;
         border-radius: 10px;
     }
 }

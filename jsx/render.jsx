@@ -30,15 +30,14 @@ export default function render(to) {
 }
 
 function Site(props) {
-    const [authParams, setauthParams] = useState(Auth.auth().authParams);
     return (
         <Router>
             <ThemeProvider theme={theme}>
                 <Header />
                 <Switch>
-                    <Route path="/" exact>
+                    <Route path="/">
                         {
-                            authParams.email === undefined ?
+                            !Auth.isAuthenticated() ?
                                 <AuthPage />
                                 :
                                 <AccountPage />

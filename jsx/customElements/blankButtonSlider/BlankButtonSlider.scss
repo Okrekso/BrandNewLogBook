@@ -1,11 +1,17 @@
 .blank-slider {
+    display: flex;
+    flex-direction: row !important;
     align-self: stretch;
     height: 3em;
     margin: 0 20px;
     margin-top: auto;
     margin-bottom: 10px;
-    flex-direction: row;
     justify-content: center;
+
+    * {
+        display: flex;
+        flex-direction: column;
+    }
 
     .element-holder {
         margin: 0 20px;

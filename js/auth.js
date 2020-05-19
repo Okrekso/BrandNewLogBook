@@ -1,10 +1,11 @@
 import Axios from "axios";
+import Backend from "./backend";
 
 // this is temporary values before backend connected
-export default class Auth {
-    static auth() {
+export class Auth {
+    constructor() {
         try {
-        this.authParams = JSON.parse(localStorage.getItem("authParams"));
+            this.authParams = JSON.parse(localStorage.getItem("authParams"));
         } catch {
             this.authParams = null;
         }
@@ -16,14 +17,60 @@ export default class Auth {
         };
         return this;
     }
-    static signIn(username, password) {
-        const authPath = "http://127.0.0.1:5050/token-auth/";
-        
-        return Axios.post(authPath, {}, {
-            data: {
-                username: username,
-                password: password
-            }
-        })
+
+    isAuthenticated() {
+        return this.authParams &&
+            this.authParams.access &&
+            this.authParams.refresh;
+    }
+
+    refreshToken() {
+        console.log("updates token");
+        return new Promise((resolve, reject) => {
+            Axios.post(Backend.refreshTokenPath, {}, {
+                data: { refresh: this.authParams.refresh }
+            })
+                .then(data => {
+                    const authParams = { ...this.authParams, access: data.data.access };
+                    this.authParams = authParams;
+                    localStorage.setItem("authParams", JSON.stringify(authParams));
+                    resolve("success");
+                })
+                .catch(err => reject(err));
+        });
+    }
+
+    logOut() {
+        localStorage.setItem("authParams", null);
+        this.authParams = null;
+    }
+
+    /**
+     * 
+     * @param {{name:String, surname:String, type:"STD"|"ADM"|"TCH"}} params 
+     */
+    signUp(params) {
+        return new Promise((resolve, reject) => {
+            
+        });
+    }
+
+    logIn(email, password) {
+        return new Promise((resolve, reject) => {
+            Axios.post(Backend.authTokenPath, {}, {
+                data: {
+                    email: email,
+                    password: password
+                }
+            })
+                .then(data => {
+                    data = { ...data.data, email: email };
+                    localStorage.setItem("authParams", JSON.stringify(data));
+                    resolve(data);
+                })
+                .catch(err => reject(err));
+        });
     }
 }
+
+export default new Auth();
