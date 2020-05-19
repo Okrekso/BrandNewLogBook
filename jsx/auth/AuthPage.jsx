@@ -14,14 +14,19 @@ export default function AuthPage(props) {
     const [state, setstate] = useState("inputs");
 
     useEffect(() => {
+        console.log(Auth.auth().authParams);
+    }, []);
+
+    useEffect(() => {
         if (state == "log-in") {
             Auth.signIn(email, password)
                 .then(res => {
                     const authParams = { token: res.data.token, email: email };
-                    console.log(token);
-                    localStorage.setItem("authParams", authParams);
+                    console.log("set:", authParams);
+                    localStorage.setItem("authParams", JSON.stringify(authParams));
                 })
                 .catch(err => {
+                    console.error(err);
                     setstate("inputs");
                     seterror("Log In error. Check entered fields");
                 });
