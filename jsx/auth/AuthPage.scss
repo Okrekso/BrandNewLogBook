@@ -5,4 +5,28 @@
     align-self: center;
     margin: 20px 0;
     border-radius: 10px;
+
+    .text-fields {
+        margin: 2px 20px;
+    }
+
+    #error-holder {
+        flex-direction: row;
+        align-items: center;
+        margin: 0px 20px;
+        margin-top: 10px;
+        p {
+            color: #df3030;
+            margin-left: 5px;
+        }
+    }
+
+    #circular {
+        align-self: center;
+    }
+
+    button {
+        margin-top: 1em;
+        border-radius: 10px;
+    }
 }

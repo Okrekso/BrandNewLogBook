@@ -50,3 +50,12 @@ textarea {
     flex: 1;
     align-self: stretch;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+}
