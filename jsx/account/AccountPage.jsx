@@ -17,6 +17,7 @@ export default function AccountPage(props) {
 
     useEffect(() => {
         const db = new Database();
+        console.log(Auth.authParams);
         // db.table("lessons").get()
         //     .then(data => {
         //         console.log(data);
@@ -26,7 +27,7 @@ export default function AccountPage(props) {
         //     })
     }, []);
 
-    return <div id="account-page" className="big-page full-page">
+    return <div id="account-page" className="big-page full-page div-flex">
         <CSSTransition classNames="flow-top" timeout={1000}
             unmountOnExit
             in={location.pathname == "/"}>

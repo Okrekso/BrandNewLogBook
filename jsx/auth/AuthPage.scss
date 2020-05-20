@@ -14,6 +14,7 @@
     .MuiInputBase-root {
         margin: 10px 20px;
     }
+
     .MuiInputLabel-root {
         margin: 0 20px;
     }
@@ -26,6 +27,7 @@
     }
 
     #error-holder {
+        display: flex;
         flex-direction: row;
         align-items: center;
         margin: 0px 20px;

@@ -146,6 +146,7 @@ export default function AuthPage() {
             <Switch>
                 <Route exact path={`/`} component={AuthForm} />
                 <Route exact path={`/sign-in`} component={SignInForm} />
+                <AuthForm />
             </Switch>
         </div>
     )
