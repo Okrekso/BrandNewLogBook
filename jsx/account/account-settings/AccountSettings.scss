@@ -1,0 +1,12 @@
+#account-settings {
+    padding: 1em 8em;
+
+    .red-btn {
+        background: red;
+        color: white;
+        margin: 10px 20px;
+        &:hover {
+            background: rgb(255, 69, 69);
+        }
+    }
+}

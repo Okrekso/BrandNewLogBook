@@ -1,0 +1,136 @@
+@import "../../scss/colors.scss";
+
+#account-page {
+    background: $second_darker;
+
+    #top {
+        height: 10em;
+        box-shadow: rgba(0, 0, 0, 0.4) 0 0 10px;
+        // background: radial-gradient(rgb(75, 85, 218), rgb(84, 182, 174));
+        color: white;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        transition: 1s ease-out;
+
+        &.student {
+            background: $main;
+        }
+
+        &.teacher {
+            background: rgb(236, 89, 89);
+        }
+
+        &:hover {
+            .decoration.l {
+                transform: rotate(20deg) translateX(0) scaleX(1.4);
+            }
+
+            .decoration.r1 {
+                transform: rotate(20deg) translateX(-8em) scaleX(1.4);
+            }
+
+            .decoration.r2 {
+                transform: rotate(20deg) translateX(0px) scaleX(1.4);
+            }
+
+            .img {
+                width: 5em;
+                height: 5em;
+            }
+        }
+
+        * {
+            z-index: 100;
+        }
+
+        .decoration {
+            z-index: 0;
+            transition: 0.1s ease-out;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            height: 250%;
+            width: 5em;
+
+            &.l {
+                left: 0;
+                transform: rotate(20deg) translateX(-2.5em);
+            }
+
+            &.r1 {
+                right: 0;
+                width: 3em;
+                transform: rotate(20deg) translateX(-4em);
+            }
+
+            &.r2 {
+                right: 0;
+                transform: rotate(20deg) translateX(2.5em);
+            }
+        }
+
+        .img {
+            border-radius: 100%;
+            width: 4em;
+            height: 4em;
+            margin-top: 10px;
+            transition: 200ms ease-out;
+            background-image: url("../../src/user.png");
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            align-items: center;
+            overflow: hidden;
+
+            &:hover {
+                .add-photo {
+                    margin-top: 70%;
+                }
+            }
+
+            .add-photo {
+                // position: absolute;
+                align-self: stretch;
+                width: 100%;
+                margin: 0 auto;
+                background: rgba(128, 128, 128, 0.5);
+                padding-bottom: 20px;
+                bottom: -1em;
+                margin-top: 100%;
+                transition: 200ms ease-out;
+                left: 0;
+            }
+        }
+
+        h3 {
+            margin: 0;
+        }
+
+        #name {
+            font-size: 1.5em;
+        }
+
+        #type {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #group {
+            font-size: 1em;
+            color: rgb(113, 113, 255);
+        }
+    }
+
+    #bottom {
+        // background: rgb(0, 102, 255);
+        flex: 9 0;
+        height: 0;
+        overflow-y: auto;
+        transition: 1s ease-out;
+        background: $second_darker;
+        .blank-slider{
+            margin-top: auto;
+        }
+    }
+}

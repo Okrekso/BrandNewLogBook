@@ -1,0 +1,45 @@
+#account-statistics {
+    flex-direction: row;
+    justify-content: center;
+
+    @media screen and (orientation:portrait) {
+        flex-direction: column;
+    }
+
+    .statistics-block {
+        flex: 0 0 10em;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .value-holder {
+            flex-direction: row;
+            justify-content: center;
+            align-items: baseline;
+
+            h4 {
+                font-size: 4em;
+                margin: 0;
+            }
+
+            h5 {
+                font-size: 1em;
+                margin: 0;
+            }
+        }
+
+        p {
+            margin: 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid black;
+            color: rgba(0, 0, 0, 0.8);
+        }
+    }
+}

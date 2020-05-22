@@ -1,0 +1,70 @@
+#edit-table-menu {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+    max-height: 100%;
+    align-self: stretch;
+    margin: 0;
+    flex: 1;
+
+    
+    #top-buttons {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #table {
+        display: flex;
+        align-self: stretch;
+        flex: 1;
+    }
+
+    #delete-form {
+        position: fixed;
+        display: flex;
+        top: calc(50% - 10em);
+        left: calc(50% - 15em);
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(4px);
+        padding: 20px 10px;
+        align-items: center;
+        align-self: center;
+        border-radius: 20px;
+        min-width: 20em;
+        min-height: 10em;
+        z-index: 1000;
+        text-align: center;
+
+        @media screen and (orientation:portrait) {
+            min-width: 5em;
+            width: 90vw;
+            left: calc(50% - 48vw);
+        }
+
+        #bottom-buttons {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    #edit-form {
+        display: flex;
+        background: linear-gradient(rgba(216, 216, 216, 0.6), rgba(129, 129, 129, 0.6));
+        padding: 10px;
+        align-self: stretch;
+        margin: 10px 0;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        transition: 0.8s;
+
+        div {
+            display: block;
+        }
+
+        h2 {
+            font-size: 1.2em;
+        }
+    }
+}

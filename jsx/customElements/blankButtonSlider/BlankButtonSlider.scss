@@ -1,0 +1,65 @@
+.blank-slider {
+    display: flex;
+    flex-direction: row !important;
+    align-self: stretch;
+    height: 3em;
+    margin: 0 20px;
+    margin-top: auto;
+    margin-bottom: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    * {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .element-holder {
+        margin: 0 20px;
+        flex: 0 1 250px;
+        color: white;
+        align-items: center;
+
+        &.current {
+            h4 {
+                opacity: 1;
+                transform: translateY(-5px);
+            }
+
+            .element {
+                background: white;
+            }
+        }
+
+        h4 {
+            margin: 0;
+            opacity: 0.2;
+            font-size: 0.8em;
+            margin-bottom: 5px;
+            transition: 200ms ease-out;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            h4 {
+                opacity: 1;
+                transform: translateY(-5px);
+            }
+
+            .element {
+                background: white;
+            }
+        }
+
+        .element {
+            background: rgba(255, 255, 255, 0.5);
+            align-self: stretch;
+            height: 0.1em;
+            transform: skew(-10deg);
+
+            &.current {
+                color: white;
+            }
+        }
+    }
+}
