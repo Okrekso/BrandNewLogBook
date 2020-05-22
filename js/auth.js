@@ -9,19 +9,19 @@ export class Auth {
         } catch {
             this.authParams = null;
         }
-        this.currentUser = {
-            name: "Tester",
-            status: "student",
-            id: "s000000",
-            group: "4SD-31",
-        };
         return this;
     }
 
     isAuthenticated() {
-        return this.authParams &&
+        console.log(this.authParams)
+        return this.authParams != null &&
             this.authParams.access &&
-            this.authParams.refresh;
+            this.authParams.refresh &&
+            this.authParams.userId;
+    }
+
+    getUserId() {
+        return this.authParams.userId;
     }
 
     refreshToken() {
@@ -36,7 +36,13 @@ export class Auth {
                     localStorage.setItem("authParams", JSON.stringify(authParams));
                     resolve("success");
                 })
-                .catch(err => reject(err));
+                .catch(err => {
+                    err = err.response.data.code;
+                    if (err == "token_not_valid") {
+                        this.logOut();
+                        window.location.reload();
+                    } else reject(err);
+                })
         });
     }
 
@@ -51,7 +57,7 @@ export class Auth {
      */
     signUp(params) {
         return new Promise((resolve, reject) => {
-            
+
         });
     }
 
