@@ -2,6 +2,7 @@
 
 #account-page {
     background: $second_darker;
+
     #top {
         height: 10em;
         box-shadow: rgba(0, 0, 0, 0.4) 0 0 10px;
@@ -110,9 +111,14 @@
             font-size: 1.5em;
         }
 
+        #type {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
         #group {
             font-size: 1em;
-            color: blue;
+            color: rgb(113, 113, 255);
         }
     }
 
@@ -123,5 +129,8 @@
         overflow-y: auto;
         transition: 1s ease-out;
         background: $second_darker;
+        .blank-slider{
+            margin-top: auto;
+        }
     }
 }

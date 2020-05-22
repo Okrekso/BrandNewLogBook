@@ -8,6 +8,7 @@ import AccountStatistics from './account-statistics/AccountStatistics';
 import AccountSchedule from './account-schedule/AccountSchedule';
 import Database from '../../js/db';
 import AccountSettings from './account-settings/AccountSettings';
+import AdminPanel from '../admin/AdminPanel';
 
 
 
@@ -15,29 +16,34 @@ export default function AccountPage(props) {
     const [schedule, setschedule] = useState([]);
     const location = useLocation();
 
+    const [currentUser, setcurrentUser] = useState({});
     useEffect(() => {
         const db = new Database();
-        console.log(Auth.authParams);
-        // db.table("lessons").get()
-        //     .then(data => {
-        //         console.log(data);
-        //     })
-        //     .catch(err => {
-        //         console.error("err:", err);
-        //     })
+        db.table("users").id(Auth.getUserId()).get()
+            .then(data => {
+                const type = () => {
+                    switch (data.type) {
+                        case ("STD"): return "student";
+                        case ("ADM"): return "admin";
+                        case ("TCH"): return "teacher";
+                    }
+                };
+                setcurrentUser({ ...data, type: type() });
+            })
     }, []);
 
     return <div id="account-page" className="big-page full-page div-flex">
         <CSSTransition classNames="flow-top" timeout={1000}
             unmountOnExit
             in={location.pathname == "/"}>
-            <div id="top" className={Auth.currentUser.status}>
+            <div id="top" className={currentUser.status}>
                 <div className="decoration l"></div>
                 <div className="img">
                     <button className="add-photo">+</button>
                 </div>
-                <h3 id="name">{Auth.currentUser.name}</h3>
-                <h3 id="group">{Auth.currentUser.group}</h3>
+                <h3 id="name">{currentUser.name} {currentUser.surname}</h3>
+                <h3 id="type">{currentUser.type}</h3>
+                <h3 id="group">{currentUser.learn_group}</h3>
                 <div className="decoration r1"></div>
                 <div className="decoration r2 s"></div>
             </div>
@@ -46,24 +52,46 @@ export default function AccountPage(props) {
         <div id="bottom">
 
             <Switch>
-                <Route path="/" exact>
-                    <AccountStatistics />
-                </Route>
+                {
+                    currentUser.type === "student" &&
+                    <Route path="/" exact>
+                        <AccountStatistics />
+                    </Route>
+                }
                 <Route path="/schedule" exact>
                     <AccountSchedule />
                 </Route>
                 <Route path="/settings" exact>
                     <AccountSettings />
                 </Route>
+                {
+                    currentUser.type === "admin" &&
+                    <Route path="/admin">
+                        <AdminPanel />
+                    </Route>
+                }
             </Switch>
-
-            <BlankButtonSlider
-                links={[
-                    { url: "/", label: "мій акаунт" },
-                    { url: "/schedule", label: "розклад" },
-                    { url: "/points", label: "успішність" },
-                    { url: "/settings", label: "налаштування" },
-                ]} />
+            {
+                currentUser.type === "student" &&
+                <BlankButtonSlider
+                    links={[
+                        { url: "/", label: "мій акаунт" },
+                        { url: "/schedule", label: "розклад" },
+                        { url: "/points", label: "успішність" },
+                        { url: "/settings", label: "налаштування" },
+                    ]} />
+            }
+            {
+                currentUser.type === "admin" &&
+                <BlankButtonSlider
+                    links={[
+                        { url: "/", label: "мій акаунт" },
+                        { url: "/admin/students", label: "студенти" },
+                        { url: "/admin/groups", label: "групи навчання" },
+                        { url: "/admin/lessons", label: "складання розкладу" },
+                        { url: "/settings", label: "налаштування" },
+                    ]} />
+            }
         </div>
     </div>
 }
