@@ -47,3 +47,56 @@
     transform: translateY(-100px);
     transition: 800ms;
 }
+
+// opacity
+
+.opacity-enter,
+.opacity-appear {
+    opacity: 0;
+}
+
+.opacity-enter-active,
+.opacity-appear-active {
+    opacity: 1;
+    transition: 800ms;
+}
+
+.opacity-exit {
+    opacity: 1;
+}
+
+.opacity-exit-active {
+    opacity: 0.2;
+    transition: 800ms;
+}
+.opacity-exit-done {
+    display:none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+// left-move
+
+.left-move-enter,
+.left-move-appear {
+    transform: translateX(400px);
+}
+
+.left-move-enter-active,
+.left-move-appear-active {
+    transform: translateX(0);
+    transition: 800ms ease-out;
+}
+
+.left-move-exit {
+    transform: translateX(0);
+}
+
+.left-move-exit-active {
+    transform: translateX(400px);
+    transition: 800ms ease-out;
+}
+.left-move-exit-done {
+    visibility: hidden;
+    opacity: 0;
+}
