@@ -125,10 +125,8 @@ export default function EditTableMenu({ dataFetched, saveChanges, addToTable, de
     }, [operation]);
 
     useEffect(() => {
-        console.log("T", transitionSelected);
-        if (transitionSelected)
-            console.log("D", valOrNullByKey(transitionSelected, "learn_group"));
-    }, [transitionSelected]);
+        console.log(editables);
+    }, []);
 
     return (
         <div id="edit-table-menu">
@@ -233,9 +231,9 @@ export default function EditTableMenu({ dataFetched, saveChanges, addToTable, de
                                                                 [
                                                                     { id: "", label: edit.null, key: "" },
                                                                     ...edit.variants
-                                                                ].map((variant, vi) => <MenuItem key={vi} value={variant.id}>{variant.label ? variant.label : variant.id}</MenuItem>)
+                                                                ].map((variant, vi) => <MenuItem key={vi} value={variant.id}>{edit.showValue ? (variant[edit.showValue] ? variant[edit.showValue] : variant.label) : (variant.id ? varinat.id : variant.label)}</MenuItem>)
                                                                 :
-                                                                edit.variants.map((variant, vi) => <MenuItem key={vi} value={variant.id}>{variant.label ? variant.label : variant.id}</MenuItem>)
+                                                                edit.variants.map((variant, vi) => <MenuItem key={vi} value={variant.id}>{edit.showValue ? variant[edit.showValue] : variant.id}</MenuItem>)
                                                         }
                                                     </TextField>
                                                 }
@@ -250,13 +248,13 @@ export default function EditTableMenu({ dataFetched, saveChanges, addToTable, de
                                                         }
                                                     </ButtonGroup>
                                                 }
-                                                 {
+                                                {
                                                     edit.type == "number" &&
                                                     <TextField label={edit.label}
-                                                    type="number"
-                                                    key={i}
-                                                    value={valOrNullByKey(transitionSelected, edit.key)}
-                                                    onChange={handle => handleChanges({ [edit.key]: handle.target.value })} />
+                                                        type="number"
+                                                        key={i}
+                                                        value={valOrNullByKey(transitionSelected, edit.key)}
+                                                        onChange={handle => handleChanges({ [edit.key]: handle.target.value })} />
                                                 }
                                             </>
                                         }
