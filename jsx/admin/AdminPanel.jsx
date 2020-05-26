@@ -7,8 +7,9 @@ import {
 
 import "./AdminPanel.scss";
 import StudentEditor from './students/StudentsEditor';
-import LessonEditor from './lessons/lessonsEditor';
+import LessonEditor from './lessons/LessonEditor';
 import GroupEditor from './groups/GroupEditor';
+import ScheduleEditor from './schedule/ScheduleEditor';
 
 export default function AdminPanel() {
     const [lessons, setlessons] = useState();
@@ -26,6 +27,7 @@ export default function AdminPanel() {
                 <Route path={`${path}/students`} component={StudentEditor} />
                 <Route path={`${path}/groups`} component={GroupEditor} />
                 <Route path={`${path}/lessons`} component={LessonEditor} />
+                <Route path={`${path}/schedule`} component={ScheduleEditor} />
             </Switch>
         </div>
     )
