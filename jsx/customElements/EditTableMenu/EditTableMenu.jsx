@@ -250,6 +250,14 @@ export default function EditTableMenu({ dataFetched, saveChanges, addToTable, de
                                                         }
                                                     </ButtonGroup>
                                                 }
+                                                 {
+                                                    edit.type == "number" &&
+                                                    <TextField label={edit.label}
+                                                    type="number"
+                                                    key={i}
+                                                    value={valOrNullByKey(transitionSelected, edit.key)}
+                                                    onChange={handle => handleChanges({ [edit.key]: handle.target.value })} />
+                                                }
                                             </>
                                         }
                                     </>

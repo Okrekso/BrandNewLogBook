@@ -88,7 +88,8 @@ export default function AccountPage(props) {
                         { url: "/", label: "мій акаунт" },
                         { url: "/admin/students", label: "студенти" },
                         { url: "/admin/groups", label: "групи навчання" },
-                        { url: "/admin/lessons", label: "складання розкладу" },
+                        { url: "/admin/lessons", label: "зайняття" },
+                        { url: "/admin/schedule", label: "складання розкладу" },
                         { url: "/settings", label: "налаштування" },
                     ]} />
             }
