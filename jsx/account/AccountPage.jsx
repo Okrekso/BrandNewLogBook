@@ -61,6 +61,9 @@ export default function AccountPage(props) {
                 <Route path="/schedule" exact>
                     <AccountSchedule />
                 </Route>
+                <Route path="/schedule/:month/:date" exact>
+                    <AccountSchedule />
+                </Route>
                 <Route path="/settings" exact>
                     <AccountSettings />
                 </Route>
