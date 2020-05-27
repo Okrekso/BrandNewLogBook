@@ -150,12 +150,13 @@ export default function ScheduleEditor({ maxPairs = 7, lessonTitle = ["пара"
 
                     let tempData = [...data];
                     console.log("temp:", tempData);
-                    for (let i = moment(data[0].time.clone()); i.unix() < moment(data[data.length - 1].time.clone()).unix(); i.add((timings.lessonDuration + timings.breakDuration), "m")) {
-                        console.log("time", i.format("HH:mm"));
-                        console.log(tempData);
-                        if (!tempData.find(e => e.time.unix() == i.unix()))
-                            tempData.push({ time: i.clone() });
-                    }
+                    if (data.length > 0)
+                        for (let i = moment(data[0].time.clone()); i.unix() < moment(data[data.length - 1].time.clone()).unix(); i.add((timings.lessonDuration + timings.breakDuration), "m")) {
+                            console.log("time", i.format("HH:mm"));
+                            console.log(tempData);
+                            if (!tempData.find(e => e.time.unix() == i.unix()))
+                                tempData.push({ time: i.clone() });
+                        }
                     setselectedScheduelItems(tempData.sort((a, b) => a.time - b.time));
                 })
     }, [selectedGroup, selectedDate]);
@@ -259,7 +260,7 @@ export default function ScheduleEditor({ maxPairs = 7, lessonTitle = ["пара"
                             <div id="group-search-results">
                                 {
                                     groups.data.filter(group => group.id.toLowerCase().indexOf(groupSearch.toLowerCase()) > -1)
-                                        .map(group => <Button onClick={() => setselectedGroup(group)}>{group.id}</Button>)
+                                        .map(group => <Button key={group.id} onClick={() => setselectedGroup(group)}>{group.id}</Button>)
                                 }
                             </div>
                         </CSSTransition>
@@ -267,7 +268,7 @@ export default function ScheduleEditor({ maxPairs = 7, lessonTitle = ["пара"
                 </RenderIf>
             </ThemeProvider>
 
-            <div className="centered flex">
+            <div className="centered flex info-block">
                 {
                     selectedScheduelItems.length == 0 ?
                         <>
@@ -293,12 +294,12 @@ export default function ScheduleEditor({ maxPairs = 7, lessonTitle = ["пара"
             <div id="schedule">
                 <Button variant="contained" color="primary" onClick={() => changeDate(moment(selectedDate.clone().subtract(1, "day")))}>
                     <LeftIcon />
-                    <p>{moment(selectedDate.clone().subtract(1, "day")).format("DD MMM.")}</p>
+                    <p>{moment(selectedDate.clone().subtract(1, "day")).format("ddd (DD MMM.)")}</p>
                 </Button>
                 <div id="schedule-day">
                     {
                         selectedScheduelItems.length > 0 ?
-                            selectedScheduelItems.map((item, i) => <Lesson timings={timings} lessonData={item} key={i} updateTimeByIndex={updateTimeByIndex}
+                            selectedScheduelItems.map((item, i) => <Lesson key={i} timings={timings} lessonData={item} key={i} updateTimeByIndex={updateTimeByIndex}
                                 index={i}
                                 deleteLesson={deleteScheduelItem}
                                 previousLessonData={selectedScheduelItems.length > 1 ? selectedScheduelItems[i - 1] : null} />)
@@ -317,7 +318,7 @@ export default function ScheduleEditor({ maxPairs = 7, lessonTitle = ["пара"
                     </RenderIf>
                 </div>
                 <Button variant="contained" color="primary" onClick={() => changeDate(moment(selectedDate.clone().add(1, "day")))}>
-                    <p>{moment(selectedDate.clone().add(1, "day")).format("DD MMM.")}</p>
+                    <p>{moment(selectedDate.clone().add(1, "day")).format("ddd (DD MMM.)")}</p>
                     <RightIcon />
                 </Button>
             </div>
@@ -334,7 +335,7 @@ export default function ScheduleEditor({ maxPairs = 7, lessonTitle = ["пара"
 
                         <div className="lesson-list">
                             {
-                                lessons.data.map(lesson => <LessonCard
+                                lessons.data.map(lesson => <LessonCard key={lesson.id}
                                     onClick={() => setselectedScheduelItems([...selectedScheduelItems, {
                                         lesson: lesson,
                                         time: moment(moment(selectedDate).clone().startOf("D").hour(9)).add((timings.lessonDuration + timings.breakDuration) * selectedScheduelItems.length, "m")

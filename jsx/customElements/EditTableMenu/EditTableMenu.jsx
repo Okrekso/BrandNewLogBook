@@ -231,7 +231,7 @@ export default function EditTableMenu({ dataFetched, saveChanges, addToTable, de
                                                                 [
                                                                     { id: "", label: edit.null, key: "" },
                                                                     ...edit.variants
-                                                                ].map((variant, vi) => <MenuItem key={vi} value={variant.id}>{edit.showValue ? (variant[edit.showValue] ? variant[edit.showValue] : variant.label) : (variant.id ? varinat.id : variant.label)}</MenuItem>)
+                                                                ].map((variant, vi) => <MenuItem key={vi} value={variant.id}>{edit.showValue ? (variant[edit.showValue] ? variant[edit.showValue] : variant.label) : (variant.id ? variant.id : variant.label)}</MenuItem>)
                                                                 :
                                                                 edit.variants.map((variant, vi) => <MenuItem key={vi} value={variant.id}>{edit.showValue ? variant[edit.showValue] : variant.id}</MenuItem>)
                                                         }

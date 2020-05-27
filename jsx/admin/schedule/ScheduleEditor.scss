@@ -38,7 +38,7 @@
     display: flex;
     flex-direction: row;
     align-self: stretch;
-    height: 10em;
+    height: 8em;
 
     #schedule-day {
         display: flex;
@@ -46,6 +46,10 @@
         flex: 1;
         overflow-x: auto;
         background: rgba(255, 255, 255, 0.15);
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     .schedule-lesson,
@@ -57,7 +61,7 @@
         margin: 4px;
         border-radius: 10px;
         padding: 4px;
-        flex: 1 0 7.5em;
+        flex: 1 0 5em;
         text-align: center;
 
         h2 {
@@ -148,11 +152,11 @@
         .lesson-title {
             margin: 0;
             margin-top: 1.4em;
-            font-size: 1.4em;
+            font-size: 1em;
         }
 
         .lesson-description {
-            font-size: 1em;
+            font-size: 0.8em;
             color: gray;
             margin: 0;
         }
@@ -179,7 +183,7 @@
     display: flex;
     flex-direction: row;
     align-self: stretch;
-    padding: 20px 10px;
+    padding: 0px 10px;
 
     #dificulty {
         display: flex;
@@ -240,5 +244,15 @@
 
     #save-button {
         margin-right: 20px;
+    }
+}
+
+.info-block {
+    padding: 10px;
+    display: flex;
+    overflow: hidden;
+
+    h2 {
+        margin: 0;
     }
 }
