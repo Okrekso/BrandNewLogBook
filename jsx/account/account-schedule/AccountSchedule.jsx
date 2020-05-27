@@ -28,7 +28,10 @@ function Lesson({ data, selectedDate, timings, onClick, selected }) {
     }, []);
     return <div className={`schedule-lesson ${selected ? "selected" : ""}`} onClick={onClick}>
         <RenderIf condition={lesson != null && Object.keys(lesson).length > 0} loadingColor="black">
-            <h2>{lesson.title}</h2>
+            {
+                lesson &&
+                <h2>{lesson.title}</h2>
+            }
         </RenderIf>
         <p>{startTime.format("HH:mm")} - {endTime.format("HH:mm")}</p>
         {
@@ -126,7 +129,7 @@ export default function AccountSchedule({ timings = { lessonDuration: 90, breakD
     return (
         <div id="account-schedule">
             <div id="week-schedule">
-                {weekDays.map(day => <div className={`week-day ${day.date() == selectedDay.date() ? "selected" : ""}`}
+                {weekDays.map((day, i) => <div key={i} className={`week-day ${day.date() == selectedDay.date() ? "selected" : ""}`}
                     onClick={() => history.push(`/schedule/${day.clone().format("MM/DD")}`)}>
                     <p className="date">{day.format("DD/MM")}</p>
                     <p className="day-of-the-week">{day.format("dddd")}</p>
@@ -138,7 +141,7 @@ export default function AccountSchedule({ timings = { lessonDuration: 90, breakD
                         {
                             todaySchedule.length > 0 ?
                                 todaySchedule
-                                    .map(data => <CSSTransition classNames="flow-top" in appear timeout={800}>
+                                    .map(data => <CSSTransition key={data.id} classNames="flow-top" in appear timeout={800}>
                                         <Lesson selected={selectedLesson == data.id} data={data} timings={timings} selectedDate={selectedDay} onClick={() => setselectedLesson(data.id)} />
                                     </CSSTransition>)
                                 :
