@@ -61,6 +61,9 @@ export default function AccountPage(props) {
                 <Route path="/schedule" exact>
                     <AccountSchedule />
                 </Route>
+                <Route path="/schedule/:month/:date" exact>
+                    <AccountSchedule />
+                </Route>
                 <Route path="/settings" exact>
                     <AccountSettings />
                 </Route>
@@ -87,8 +90,10 @@ export default function AccountPage(props) {
                     links={[
                         { url: "/", label: "мій акаунт" },
                         { url: "/admin/students", label: "студенти" },
+                        { url: "/admin/teachers", label: "викладачі" },
                         { url: "/admin/groups", label: "групи навчання" },
-                        { url: "/admin/lessons", label: "складання розкладу" },
+                        { url: "/admin/lessons", label: "предмети" },
+                        { url: "/admin/schedule", label: "складання розкладу" },
                         { url: "/settings", label: "налаштування" },
                     ]} />
             }

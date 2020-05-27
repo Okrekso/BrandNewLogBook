@@ -1,0 +1,258 @@
+#lesson-editor {
+    flex-direction: column;
+}
+
+#group-search {
+    position: relative;
+    overflow: visible;
+    margin-top: 2px;
+}
+
+#group-search-input {
+    background: white;
+    padding: 4px 8px;
+    margin: 4px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 4em;
+    z-index: 10001;
+}
+
+#group-search-results {
+    display: flex;
+    z-index: 1000;
+    width: 98%;
+    align-self: center;
+    box-shadow: rgba(0, 0, 0, 0.521) 0 0 6px;
+    top: calc(4em + 8px);
+    // margin: 0 8px;
+    background-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: absolute;
+}
+
+#schedule {
+    margin: 4px;
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    height: 8em;
+
+    #schedule-day {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        overflow-x: auto;
+        background: rgba(255, 255, 255, 0.15);
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .schedule-lesson,
+    #add-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.4);
+        margin: 4px;
+        border-radius: 10px;
+        padding: 4px;
+        flex: 1 0 5em;
+        text-align: center;
+
+        h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .small-text {
+            opacity: 0;
+            transition: 0.3s;
+            font-size: 0.7em;
+        }
+
+        #info {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            transition: 0.3s;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            #info {
+                transform: scale(1.05);
+                font-size: 1.05em;
+            }
+
+            .small-text {
+                opacity: 1;
+            }
+
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    #add-button {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.lesson-list {
+    display: flex;
+    align-self: stretch;
+    flex: 1;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.1);
+
+    .lesson-card {
+        display: flex;
+        min-width: 12em;
+        max-width: 20em;
+        background: white;
+        box-shadow: rgba(0, 0, 0, 0.4) 0 0 4px;
+        border-radius: 10px;
+        color: black;
+        margin: 10px 10px;
+        padding: 10px;
+        position: relative;
+        transition: 0.4s ease-out;
+
+        &.humanitary {
+            .lesson-title {
+                color: darkgreen;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            background: rgb(245, 245, 245);
+            box-shadow: rgba(0, 0, 0, 0.75) 0 0 10px;
+        }
+
+        .lesson-id {
+            position: absolute;
+            color: blue;
+            right: 10px;
+            top: 0px;
+        }
+
+        .lesson-title {
+            margin: 0;
+            margin-top: 1.4em;
+            font-size: 1em;
+        }
+
+        .lesson-description {
+            font-size: 0.8em;
+            color: gray;
+            margin: 0;
+        }
+
+        .lesson-credit {
+            color: darkred;
+        }
+    }
+}
+
+.small-text {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 10px 0;
+}
+
+#lesson-selector {
+    h2 {
+        margin: 4px 0;
+    }
+}
+
+#control-panel {
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    padding: 0px 10px;
+
+    #dificulty {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        margin-left: 20px;
+        margin-right: auto;
+
+        h2 {
+            font-size: 1em;
+        }
+
+        .round-divs {
+            display: flex;
+            flex-direction: row;
+            height: 3em;
+
+            &.digits-low {
+                .filled {
+                    background-color: green;
+                }
+            }
+
+            &.digits-medium {
+                .filled {
+                    background-color: rgb(127, 185, 17);
+                }
+            }
+
+            &.digits-high {
+                .filled {
+                    background-color: rgb(155, 15, 15);
+
+                    @keyframes blink-red {
+                        0% {
+                            box-shadow: red 0 0 10px;
+                        }
+
+                        100% {
+                            box-shadow: red 0 0 20px;
+                        }
+                    }
+
+                    animation: infinite blink-red 0.5s alternate;
+                }
+            }
+
+
+            div {
+                border-radius: 100%;
+                width: 0.8em;
+                height: 0.8em;
+                border: 2px solid white;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    #save-button {
+        margin-right: 20px;
+    }
+}
+
+.info-block {
+    padding: 10px;
+    display: flex;
+    overflow: hidden;
+
+    h2 {
+        margin: 0;
+    }
+}
