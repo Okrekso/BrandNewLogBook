@@ -90,6 +90,7 @@ export default function AccountPage(props) {
                     links={[
                         { url: "/", label: "мій акаунт" },
                         { url: "/admin/students", label: "студенти" },
+                        { url: "/admin/teachers", label: "викладачі" },
                         { url: "/admin/groups", label: "групи навчання" },
                         { url: "/admin/lessons", label: "предмети" },
                         { url: "/admin/schedule", label: "складання розкладу" },
