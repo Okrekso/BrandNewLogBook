@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 
 import "./AdminPanel.scss";
+import TeachersEditor from './teachers/TeachersEditor';
 import StudentEditor from './students/StudentsEditor';
 import LessonEditor from './lessons/LessonEditor';
 import GroupEditor from './groups/GroupEditor';
@@ -25,6 +26,7 @@ export default function AdminPanel() {
         <div id='admin-panel' className="full-page big-page">
             <Switch>
                 <Route path={`${path}/students`} component={StudentEditor} />
+                <Route path={`${path}/teachers`} component={TeachersEditor} />
                 <Route path={`${path}/groups`} component={GroupEditor} />
                 <Route path={`${path}/lessons`} component={LessonEditor} />
                 <Route path={`${path}/schedule`} component={ScheduleEditor} />

@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     }
 });
 
-export default function EditTableMenu({ dataFetched, saveChanges, addToTable, deleteById, data, headers, editables }) {
+export default function EditTableMenu({ dataFetched, dataKeys, saveChanges, addToTable, deleteById, data, headers, editables }) {
     const [selected, setselected] = useState(null);
     const [transitionSelected, settranstionSelected] = useState(null);
     const [operation, setoperation] = useState("edit");
@@ -187,7 +187,10 @@ export default function EditTableMenu({ dataFetched, saveChanges, addToTable, de
                                             onClick={() => setselected(dataItem)}
                                             key={i} hover>
                                             {
-                                                Object.keys(dataItem).map((key, vi) => <TableCell key={vi}>{dataItem[key]}</TableCell>)
+                                                !dataKeys ?
+                                                    Object.keys(dataItem).map((key, vi) => <TableCell key={vi}>{dataItem[key]}</TableCell>)
+                                                    :
+                                                    dataKeys.map((key, vi) => <TableCell key={vi}>{dataItem[key]}</TableCell>)
                                             }
                                         </TableRow>)
                                     }
